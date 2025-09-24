@@ -40,6 +40,7 @@ body{
 #minDots,
 #secDots{
     position: relative;
+    rotate: 90deg;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -63,6 +64,7 @@ body{
 #minDots h2,
 #secDots h2{
     position: absolute;
+    transform: rotate(-90deg);
     text-align: center;
     inset: 0;
     display: flex;
@@ -93,10 +95,31 @@ body{
     position: absolute;
     color: antiquewhite;
     display: inline-flex;
-    transform: translate(135px, 90px);
+    transform: rotate(-90deg) translate(-30px, 90px);
     border: 1px solid white;
     border-radius: 50%;
     height: 33px;
     width: 33px;
     padding: 1px;
+}
+
+#secDots .dot{
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 3px;
+    background-color: var(--seconds);
+    transform-origin: 100px;
+}
+#secDots .active.dot{
+    background-color: var(--seconds);
+    box-shadow: 0 0 10px var(--seconds),
+    0 0 20px var(--seconds)
+    0 0 30px var(--seconds);
+}
+#secDots .active.dot ~ .dot{
+    background-color: #555;
+}
+#secDots .dot:nth-child(5n + 5){
+    width: 20px;
 }
