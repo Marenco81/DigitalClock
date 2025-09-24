@@ -23,8 +23,19 @@ const clock = () => {
             secondsDots += '<div class="dot" style="transform: rotate('+rotation+'deg)"></div>'
         }
     }
+
+    var minutesDots = '';
+    for (var i = 1; i < 61; i++) {
+        var rotation = i * 6; // 360/60 = 6 degrees per minute;
+        if( i === minutes ){
+            minutesDots += '<div class="dot active" style="transform: rotate('+rotation+'deg)"></div>'
+        }
+        else{
+            minutesDots += '<div class="dot" style="transform: rotate('+rotation+'deg)"></div>'
+        }
+    }
 secDots.innerHTML = secondsDots + '<h2>' + zero(seconds) + '<br><span>seconds</span></h2>';
-minDots.innerHTML = '<h2>' + zero(minutes) + '<br><span>minutes</span></h2>';
+minDots.innerHTML = minutesDots + '<h2>' + zero(minutes) + '<br><span>minutes</span></h2>';
 hrDots.innerHTML = '<b>' + amPm + '</b>' + '<h2>' + zero(hours) + '<br><span>hours</span></h2>';
 
 }
