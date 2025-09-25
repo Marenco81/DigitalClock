@@ -18,6 +18,7 @@
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -26,6 +27,7 @@ body{
 #clock {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 80px;
@@ -38,6 +40,12 @@ body{
 }
 #secDots{
     color: var(--seconds);
+}
+#dates h3{
+    font-size: 2em;
+    color: aliceblue;
+    margin-top: 50px;
+    height: 50px;
 }
 #hrDots,
 #minDots,
@@ -98,7 +106,7 @@ body{
     position: absolute;
     color: antiquewhite;
     display: inline-flex;
-    transform: rotate(-90deg) translate(-30px, 90px);
+    transform: rotate(-90deg) translate(-25px, 90px);
     border: 1px solid white;
     border-radius: 50%;
     font-size: 1em;
@@ -147,5 +155,26 @@ body{
     background-color: #555;
 }
 #minDots .dot:nth-child(5n + 5){
+    width: 20px;
+}
+
+#hrDots .dot{
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 3px;
+    background-color: var(--minuteDots);
+    transform-origin: 100px;
+}
+#hrDots .active.dot{
+    background-color: var(--minuteDots);
+    box-shadow: 0 0 10px var(--minuteDots),
+    0 0 20px var(--minuteDots)
+    0 0 30px var(--minuteDots);
+}
+#hrDots .active.dot ~ .dot{
+    background-color: #555;
+}
+#hrDots .dot:nth-child(3n + 3){
     width: 20px;
 }

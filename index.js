@@ -2,6 +2,7 @@ const clock = () => {
     let secDots = document.getElementById("secDots");
     let minDots = document.getElementById("minDots");
     let hrDots = document.getElementById("hrDots");
+    let dates = document.getElementById("dates");
 
     var date = new Date();
     var hours = date.getHours() % 12; // convert to 12-hour format
@@ -11,6 +12,8 @@ const clock = () => {
 
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
+
+    var day = date.toDateString();
 
 
     var secondsDots = '';
@@ -34,9 +37,22 @@ const clock = () => {
             minutesDots += '<div class="dot" style="transform: rotate('+rotation+'deg)"></div>'
         }
     }
+
+    var hoursDots = '';
+    for (var i = 1; i < 13; i++) {
+        var rotation = i * 30; // 360/12 = 30 degrees per hour;
+        if( i === hours ){
+            hoursDots += '<div class="dot active" style="transform: rotate('+rotation+'deg)"></div>'
+        }
+        else{
+            hoursDots += '<div class="dot" style="transform: rotate('+rotation+'deg)"></div>'
+        }
+    }
+
 secDots.innerHTML = secondsDots + '<h2>' + zero(seconds) + '<br><span>seconds</span></h2>';
 minDots.innerHTML = minutesDots + '<h2>' + zero(minutes) + '<br><span>minutes</span></h2>';
-hrDots.innerHTML = '<b>' + amPm + '</b>' + '<h2>' + zero(hours) + '<br><span>hours</span></h2>';
+hrDots.innerHTML = hoursDots + '<b>' + amPm + '</b>' + '<h2>' + zero(hours) + '<br><span>hours</span></h2>';
+dates.innerHTML = '<h3>' + day + '</h3>' // todo, agregar fecha completa
 
 }
 
